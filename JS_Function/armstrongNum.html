@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Armstrong Number</title>
+
+    <style>
+        #number{
+            padding: 2px;
+            margin: 4px;
+        }
+
+        #result{
+            font-size: 20px;
+        }
+
+        #errorInfo{
+            color: red;
+            font-size: 16px;
+        }
+    </style>
+
+</head>
+<body>
+    
+    <h2>Armstrong Number Check!</h2>
+
+    Enter Number: <input type="text" id="number" autofocus onChange="checkArmstrong()">
+    <p id="errorInfo"></p>
+
+    <div id="result"></div>
+
+
+    <script>
+        let number, numberLength, errorInfo, result;
+        errorInfo = document.getElementById("errorInfo");
+        result = document.getElementById("result");
+
+        function verifyNumber() {
+          number = document.getElementById("number").value;
+          numberLength = number.length;
+          if(isNaN(number)) {
+            result.innerHTML = "";
+            errorInfo.innerHTML = "Enter a valid number";
+            return false;
+          } else {
+            errorInfo.innerHTML = "";
+            return true;
+          }
+
+        }
+
+        function checkArmstrong() {
+            if(verifyNumber()) {
+                number = parseInt(number);
+              
+                let temp, digit, sum=0;    
+                temp = number;
+                while(temp > 0)
+                {
+                    digit = parseInt(temp%10);
+                    sum += Math.pow(digit, numberLength);
+                    temp = parseInt(temp/10);
+                }
+                
+                if(sum === number)
+                {
+                    result.style.color = "green";
+                    result.innerHTML = number + " is an Armstrong Number";
+                } else {
+                    result.style.color = "red";
+                    result.innerHTML = number + " is not Armstrong Number";
+                }
+            }
+        }
+
+    </script>
+
+</body>
+</html>
