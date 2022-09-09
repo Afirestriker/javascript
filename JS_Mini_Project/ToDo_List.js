@@ -8,17 +8,17 @@ const ul = document.querySelector('#tasksList');
 const task = document.querySelector('#task');
 const btnSubmit = document.querySelector('#formBtnSubmit')
 
-/* make button 'Submit' disabled on page load */
+/* By default 'Submit' button is disabled */
 document.addEventListener('DOMContentLoaded', () => {
     btnSubmit.disabled = true;
 });
 
-/* toggle button 'Submit', based on input value lenght */
+/* toggle 'Submit' button, on keyword keyup */
 task.onkeyup = function() {
     (this.value).length > 0 ? btnSubmit.disabled=false : btnSubmit.disabled=true;
 }
 
-/* on form submit, create a new <li> and append to <ul> */
+/* on form submit, create & append a new <li> to <ul> */
 document.querySelector('#form_task').onsubmit = () => {
     const li = document.createElement('li');
     li.innerHTML = task.value;
@@ -26,7 +26,7 @@ document.querySelector('#form_task').onsubmit = () => {
     task.value = "";
 
     /* Stop html <form> from submitting, 
-       since we are not using any backend server here. 
+       since everything is client side and not on backend server.
     */
     return false;
 }
