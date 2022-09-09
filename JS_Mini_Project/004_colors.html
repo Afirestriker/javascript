@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Change Text color on Btn click or select change</title>
+    </head>
+
+    <body>
+        <h1 id="hello">Hello!</h1>
+        
+        <button class="btnColor" data-color="blue">  Blue  </button>
+        <button class="btnColor" data-color="green"> Green </button>
+        <button class="btnColor" data-color="red">   Red   </button>
+        <button class="btnColor" data-color="black"> Reset </button>
+    </body>
+
+    <script>
+        const txtHello  = document.querySelector('#hello');
+        const btnsColor = document.querySelectorAll('.btnColor');
+        const btnReset  = document.querySelector('#btnReset');
+
+        btnsColor.forEach( (eachButton) => {
+            eachButton.onclick = () => {
+                txtHello.style.color = eachButton.dataset.color;
+            }
+        });
+
+        /* Replacing this four call, with the above forEach loop */
+        // document.querySelector('#btnBlue').onclick = () => {
+        //         txtHello.style.color = document.querySelector('#btnBlue').dataset.color;
+        // }        
+        // document.querySelector('#btnGreen').onclick = () => {
+        //         txtHello.style.color = document.querySelector('#btnGreen').dataset.color;
+        // }
+        // document.querySelector('#btnRed').onclick = () => {
+        //         txtHello.style.color = document.querySelector('#btnRed').dataset.color;
+        // }
+        // document.querySelector('#btnReset').onclick = () => {
+        //         txtHello.style.color = document.querySelector('#btnReset').dataset.color;
+        // }
+    </script>
+
+</html>

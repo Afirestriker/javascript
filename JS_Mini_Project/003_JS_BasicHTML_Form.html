@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Hello Person</title>
+</head>
+
+<body>
+    <h1 id="msgGreet">Hello!</h1>
+    <form id="nameForm">
+        <input type="text" id="name" placeholder="Enter Name" autofocus>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+
+    <script>
+        document.querySelector('#nameForm').onsubmit = () => {
+            const txtName = document.querySelector('#name').value;
+            alert(`Hello, ${txtName}!`);
+        }
+    </script>
+
+</html>
