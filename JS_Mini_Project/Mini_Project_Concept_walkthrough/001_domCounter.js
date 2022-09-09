@@ -14,18 +14,19 @@ document.addEventListener('DOMContentLoaded', () => {
     let counter = 0;
     const txtCount = document.querySelector('#txtCount');
     
-    if(localStorage.getItem("counter")){
+    if(!localStorage.getItem("counter")){
+        counter = localStorage.setItem("counter", 0);
+    }else{   
         counter = localStorage.getItem("counter")
         txtCount.innerHTML = counter;
-    }else{   
-        counter = localStorage.setItem("counter", 0);
     }
 
     function incrementCount() {
         txtCount.innerHTML = ++counter;
+        if(counter % 10 === 0) {
+            alert(`Counter ${counter} is a multiple of 10`); 
+        }
         localStorage.setItem("counter", counter)
-        if(counter % 10 === 0)
-            alert(`Counter ${counter} is a multiple of 10`);
     }
 
     /* incrementCount is a function, parenthesis are not used, so that
@@ -49,8 +50,8 @@ document.addEventListener('DOMContentLoaded', () => {
     /* reset counter */
     document.querySelector('#resetCounter').onclick = () => {
         localStorage.setItem('counter', 0);
+        counter = localStorage.getItem("counter");
         txtCount.innerHTML = localStorage.getItem("counter");
         txtCount.style.color = "black";
-        counter = localStorage.getItem("counter");
     }
 });
