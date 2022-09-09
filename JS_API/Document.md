@@ -1,13 +1,13 @@
-** JavaScript Object:
+## JavaScript Object:
 > Object in javaScript turns out to be quite powerful. To be able to represent data in a structured way, where we have an association of keys or otherwise known as properties with particular values and to be able to access a particular value.
 >> It turns out that one of the ways this is make 'object' most useful is in the exchange of data-- moving data around from one service to another.
 
-** API (Application Programming Interfaces)
+## API (Application Programming Interfaces)
 > API. which in the context of the web, you can think of as some well-defined structured way for services on the internet to communicate with each other. 
 > If you want your application to be able to talk to some other service-- maybe you want your application to interact with Google Maps, or to be able to interact with Amazon, or some other weather service to get the day's weather-- then you might be able to access some API, some mechanism whereby you can communicate with another service by sending a request and receiving back data in some sort of very well-structured format. 
 > And very often, that well-structured format happens to be a particular type of data known as JSON
 
-** JSON (JavaScript Object Notation)
+## JSON (JavaScript Object Notation)
 > JSON, is a way of transferring data in the form of JavaScript objects-- these sort of objects that happen to have properties and values associated with them. 
 >> And the very nice thing about  this(JSON) particular representation is that it is both human-readable and machine-readable-- that we as people can look at this and get an intuitive understanding for what all of this means, but also a computer knows how to access particular properties that appear before the colon and get access to what those values are, which appear after the colon as well. 
 
