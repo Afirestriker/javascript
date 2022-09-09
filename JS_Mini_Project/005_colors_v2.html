@@ -17,8 +17,11 @@
 </body>
 
 <script>
-    document.querySelector('#selectColors').onchange = () => {
-        document.querySelector('#hello').style.color = document.querySelector('#selectColors').value
+    document.querySelector('#selectColors').onchange = function() {
+        /* NOTE: 'this' keyword won't work inside arrow function, hence we use function keyword 
+           to create a function at here.
+         */
+        document.querySelector('#hello').style.color = this.value;
     }
 </script>
 
