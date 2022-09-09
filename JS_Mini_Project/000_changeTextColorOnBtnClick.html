@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Chnage Text color on Btn click</title>
+        <script>
+            document.onload = () => {
+                const txtHeading = document.querySelector('#heading');
+                const btnBlack = document.querySelector('#btnBlack');
+                const btnBlue = document.querySelector('#btnBlue');
+                
+                document.querySelector('#btnBlack').onclick = () => {
+                    txtHeading.style.color = btnBlack.value(); 
+                }
+
+                document.querySelector('#btnBlue').onclick = () => {
+                    txtHeading.style.color = btnBlue.value(); 
+                }
+            }
+        </script>
+    </head>
+
+    <body>
+        <h1 id="heading">Hello World!</h1>
+        
+        <button id="btnBlack">Black</button>
+        <button id="btnBlue">Blue</button>
+        <button id="btnGreen">Green</button>
+        <button id="btnRed">Red</button>
+    </body>
+</html>
