@@ -7,9 +7,8 @@
     </body>
 
     <script>
+        const greetMsg = document.querySelector('#msgGreet');
         document.querySelector('#btnGreet').onclick = () => {
-            const greetMsg = document.querySelector('#msgGreet');
-            
             /* checking for strict equality */
             if(greetMsg.innerHTML === "Hello!")
                 greetMsg.innerHTML = "Goodbye!";
