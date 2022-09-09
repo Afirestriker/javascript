@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Change Text color on select change</title>
+</head>
+
+<body>
+    <h1 id="hello">Hello!</h1>
+
+    <select id="selectColors">
+        <option value="black"> Black </option>
+        <option value="blue">  Blue  </option>
+        <option value="green"> Green </option>
+        <option value="red">   Red   </option>
+    </select>
+</body>
+
+<script>
+    document.querySelector('#selectColors').onchange = () => {
+        document.querySelector('#hello').style.color = document.querySelector('#selectColors').value
+    }
+</script>
+
+</html>
