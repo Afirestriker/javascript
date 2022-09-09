@@ -5,4 +5,4 @@
 
 
 > <a href="https://htmlpreview.github.io/?https://github.com/Afirestriker/JavaScript/blob/main/JS_Function/armstrongNum.html" target="_blank">armstrongNum.html</a><br>
-![armstrongNum Output](./Output_Screenshots/armstrongNum.png "amstrongNum.html Screenshot)
+![armstrongNum Output](./Output_Screenshots/armstrongNum.png "amstrongNum.html Screenshot")
