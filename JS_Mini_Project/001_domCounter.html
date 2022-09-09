@@ -2,18 +2,10 @@
 <html lang="en">
     <head>
         <title>DOM Dynamic Counter</title>
-
     </head>
+
     <body>
         <h1 id="count">0</h1>
         <button id="incrementCount">Count</button>
     </body>
-    <script>
-        const btnCount = document.querySelector('#incrementCount');
-        const txtCount = document.querySelector('#count');
-        let count = 0;
-        btnCount.onclick = () => {
-            txtCount.innerHTML = ++count; 
-        }
-    </script>
 </html>
