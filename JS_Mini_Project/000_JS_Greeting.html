@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head><title>Hello & GoodBye</title></head>
+    <body>
+        <h1 id="msgGreet">Hello!</h1>
+        <button id="btnGreet">Click Me</button>
+    </body>
+
+    <script>
+        document.querySelector('#btnGreet').onclick = () => {
+            const greetMsg = document.querySelector('#msgGreet');
+            
+            /* checking for strict equality */
+            if(greetMsg.innerHTML === "Hello!")
+                greetMsg.innerHTML = "Goodbye!";
+            else
+                greetMsg.innerHTML = "Hello!"
+        }
+    </script>
+</html>
