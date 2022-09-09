@@ -11,33 +11,46 @@
  */
 document.addEventListener('DOMContentLoaded', () => {
 
-    let count = 0;
+    let counter = 0;
     const txtCount = document.querySelector('#txtCount');
-
-    function incrementCount() {
-        txtCount.innerHTML = ++count; 
-        if(count % 10 === 0)
-            alert(`Counter ${count} is a multiple of 10`);
+    
+    if(localStorage.getItem("counter")){
+        counter = localStorage.getItem("counter")
+        txtCount.innerHTML = counter;
+    }else{   
+        counter = localStorage.setItem("counter", 0);
     }
 
+    function incrementCount() {
+        txtCount.innerHTML = ++counter;
+        localStorage.setItem("counter", counter)
+        if(counter % 10 === 0)
+            alert(`Counter ${counter} is a multiple of 10`);
+    }
+
+    /* incrementCount is a function, parenthesis are not used, so that
+       every time the incrementCount button is called, the function should execute.
+     */
     document.querySelector('#incrementCount').onclick = incrementCount;
-    /* incrementCount is a function, and omitting the () parenthesis means, 
-        the incrementCount() function is only going to be call when we click on 
-        button with id 'incrementCount'.
     
-        If we had put (), then it will run the function as soon as the statement (line:23)
-        has got executed.
-    */
-    
-    /* Auto increment count value after every 1 second */
+    /* Auto increment counter value after every 1 sec*/
     let interval_ID = 0;
     document.querySelector('#startAutoIncrement').onclick = function() {
         txtCount.style.color = "green";
-        interval_ID = setInterval(incrementCount, 1000)
+        interval_ID = setInterval(incrementCount, 1000)  /*1000 is 1000ms i.e 1 Seconds*/
     }
 
+    /* Stop counter auto incrementation */
     document.querySelector('#stopAutoIncrement').onclick = function() {
         txtCount.style.color = "red";
         clearInterval(interval_ID);
+    }
+
+    /* reset counter */
+    document.querySelector('#resetCounter').onclick = () => {
+        localStorage.setItem('counter', 0);
+        txtCount.innerHTML = localStorage.getItem("counter");
+        txtCount.style.color = "black";
+        counter = localStorage.getItem("counter");
     }
 });
