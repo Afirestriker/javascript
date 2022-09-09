@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Chnage Text color on Btn click</title>
+        <title>Change Text color on Btn click</title>
         <script>
-            document.onload = () => {
+            document.onload = function() {
                 const txtHeading = document.querySelector('#heading');
                 const btnBlack = document.querySelector('#btnBlack');
                 const btnBlue = document.querySelector('#btnBlue');
@@ -12,7 +12,7 @@
                     txtHeading.style.color = btnBlack.value(); 
                 }
 
-                document.querySelector('#btnBlue').onclick = () => {
+                document.querySelector('#btnBlue').onclick = function() {
                     txtHeading.style.color = btnBlue.value(); 
                 }
             }
