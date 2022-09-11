@@ -7,6 +7,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const divResult             = document.querySelector('#result');
     btnConvert.disabled         = true;
     
+    /**
+     *Resets the html <form>
+     */
+    const resetTxtInput = () => {
+        txtBaseCurrencyCode.value="";
+        txtTargetCurrencyCode.value="";
+        txtBaseCurrencyCode.focus();
+    }
+
+    /**
+     * Append API Access code to Headers object
+     */
     const apikeyValue = new Headers();
     apikeyValue.append("apikey", "8nK1GxiCjFk3OhDvqJvvpjxCEZc108ZT");
     const requestDefaultOptions = {
@@ -14,11 +26,11 @@ document.addEventListener('DOMContentLoaded', () => {
         headers : apikeyValue
     };
 
-    const resetTxtInput = () => {
-        txtBaseCurrencyCode.value="";
-        txtTargetCurrencyCode.value="";
-    }
-
+    /**
+     * JS Promise on API call
+     * @param {num} baseCurrencyCode denotes the base currency to convert from
+     * @param {num} targetCurrencyCode  denotes the target currency to convert to
+     */
     const currencyExchangeApiCall = (baseCurrencyCode, targetCurrencyCode) => {
         let URL = `https://api.apilayer.com/exchangerates_data/latest?base=${baseCurrencyCode}&symbols=${targetCurrencyCode}`;
         fetch(URL, requestDefaultOptions)
@@ -27,6 +39,11 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(error => currencyExchangeApiResponse(error, 0));
     }
 
+    /**
+     * Action: after receiving response from API/Promise
+     * @param {JSON} result the API response in JSON format 
+     * @param {boolean} status  denotes API response as 'success' or 'failed'
+     */
     const currencyExchangeApiResponse = (result, status) => {
         if(status)
         {
@@ -40,7 +57,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    /**Make use of querySelectorAll() method */
+    /**
+     * Make use of querySelectorAll() method
+     */
     document.querySelectorAll('.currencyCodeValue').forEach(txtInput => {
         txtInput.onkeyup = () => {
             const baseCurrencyLength   = txtBaseCurrencyCode.value.length   === 3;
@@ -48,10 +67,13 @@ document.addEventListener('DOMContentLoaded', () => {
             baseCurrencyLength && targetCurrencyLength ? btnConvert.disabled=false : btnConvert.disabled=true;
         }
     });
-    
+
+    /**
+     * Event: on form submit
+     * @returns boolean false, to stop the form from submitting
+     */
     currencyForm.onsubmit = () => {
-        currencyExchangeApiCall(txtBaseCurrencyCode.value.trim().toUpperCase(), txtTargetCurrencyCode.value.trim().toUpperCase());
-        /**Stop form from submitting to server */
+        currencyExchangeApiCall(txtBaseCurrencyCode.value.toUpperCase(), txtTargetCurrencyCode.value.toUpperCase());
         return false;
     }
 
