@@ -30,13 +30,21 @@ document.addEventListener('DOMContentLoaded', () => {
      * JS Promise on API call
      * @param {num} baseCurrencyCode denotes the base currency to convert from
      * @param {num} targetCurrencyCode  denotes the target currency to convert to
+     
+     * NOTE: since we are using JS arrow functions and based on convention, an arrow function
+             must have an return statement. And if there's only one parameter and only
+             one statement i.e reurn statement. 
+             We can easily write the arrow function
+             from this: (abc) => { return xyz}
+             to this  :  abc  =>  xyz
+             This is what have been done below
      */
     const currencyExchangeApiCall = (baseCurrencyCode, targetCurrencyCode) => {
         let URL = `https://api.apilayer.com/exchangerates_data/latest?base=${baseCurrencyCode}&symbols=${targetCurrencyCode}`;
-        fetch(URL, requestDefaultOptions)
-            .then(response => response.json())
-            .then(result => currencyExchangeApiResponse(result, 1))
-            .catch(error => currencyExchangeApiResponse(error, 0));
+        fetch(URL, requestDefaultOptions)       //making an api call and fetching the respone.
+            .then(response => response.json())  //then, takes the reponse and convert to JSON format
+            .then(data => currencyExchangeApiResponse(data, 1))  //then, once data is issue, do something...
+            .catch(error => currencyExchangeApiResponse(error, 0));  //if any error while API call, do something...
     }
 
     /**
@@ -73,6 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
      * @returns boolean false, to stop the form from submitting
      */
     currencyForm.onsubmit = () => {
+        divResult.innerHTML = "Loading...";
         currencyExchangeApiCall(txtBaseCurrencyCode.value.toUpperCase(), txtTargetCurrencyCode.value.toUpperCase());
         return false;
     }

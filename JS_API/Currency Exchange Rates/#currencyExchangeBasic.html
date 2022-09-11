@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Currencty Exchange Basic</title>
+    <!-- Look JavaScript code, at the end of <body> tag -->
+</head>
+<body>
+    <p style="font-size:12px">Note: Enter standard 3 letters currency code (eg: INR, USD, GBP...), with no whitespaces</p>
+    <form id="currencyForm">
+        1 USD To
+        <input type="text" id="txtCurrencyCode" class="currencyCodeValue" placeholder="Currency Code" autofocus>
+        <input type="submit" id="btnSubmit" value="Convert">
+    </form>
+    <div id="result" style="margin: 20px"></div>
+</body>
+
+<!-- JavaScript Starts here -->
+<script>
+    const currencyForm = document.querySelector('#currencyForm');
+    const txtCurrencyCode = document.querySelector('#txtCurrencyCode');
+    const btnConvert = document.querySelector('#btnSubmit');
+    const divResult = document.querySelector('#result');
+    btnConvert.disabled = true;
+
+    /**
+     * On form input keyup, toggle button.disabled boolean
+     */
+    txtCurrencyCode.onkeyup = () => {
+        txtCurrencyCode.value.length === 3 ? btnConvert.disabled = false : btnConvert.disabled = true;
+    }
+    
+    /**
+     * Append API Access code to Headers object
+     */
+    const apikeyValue = new Headers();
+    apikeyValue.append("apikey", "8nK1GxiCjFk3OhDvqJvvpjxCEZc108ZT");
+    const requestDefaultOptions = {
+        method: 'GET',
+        headers: apikeyValue
+    };
+
+    /**
+     * Event: on form submit
+     * JS Promise on API call
+     * NOTE: since we are using JS arrow functions and based on convention, an arrow function
+             must have an return statement. And if there's only one parameter and only
+            one statement i.e reurn statement. 
+            We can easily write the arrow function
+            from this: (abc) => { return xyz}
+            to this  :  abc  =>  xyz
+            This is what have been done below
+    * @returns boolean false, to stop the form from submitting
+    */
+    currencyForm.onsubmit = () => {
+        divResult.innerHTML = "Loading...";
+        let currencyCode = txtCurrencyCode.value.toUpperCase();
+        let URL = `https://api.apilayer.com/exchangerates_data/latest?base=USD&symbols=${currencyCode}`;
+        
+        //making an api call and fetching the respone.
+        fetch(URL, requestDefaultOptions)
+            //then, takes the reponse and convert to JSON format
+            .then(response => response.json())
+            //then, once data is issue, do something...
+            .then(data => {
+                console.log(data);
+                return divResult.innerHTML = `1 USD is equals to ${data.rates[currencyCode]} ${currencyCode}`;
+            })
+            //if any error while API call, do something...
+            .catch(error => divResult.innerHTML = `Something not right! Try again.`);
+
+        return false;
+    }
+</script>
+
+</html>
