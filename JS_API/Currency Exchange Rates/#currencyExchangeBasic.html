@@ -47,8 +47,8 @@
     currencyForm.onsubmit = () => {
         divResult.innerHTML = "Loading...";
         let currencyCode = txtCurrencyCode.value.toUpperCase();
+        
         let URL = `https://api.apilayer.com/exchangerates_data/latest?base=USD`;
-
         //making an api call and fetching the respone.
         fetch(URL, requestDefaultOptions)
             //then, takes the reponse and convert to JSON format

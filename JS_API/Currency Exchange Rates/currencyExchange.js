@@ -55,11 +55,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const currencyExchangeApiResponse = (result, status) => {
         if(status)
         {
+            //console.log(result);
             divResult.style.color = "green";
             let rates = txtTargetCurrencyCode.value.toUpperCase();
             divResult.innerHTML = `1 ${result.base} is equals to ${result.rates[rates].toFixed(3)} ${rates}`;
             resetTxtInput();
         } else {
+            console.log("Error", result);
             divResult.style.color = "red";
             divResult.innerHTML = "Something not right! Please Try Again.";
             resetTxtInput();
@@ -84,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
     currencyForm.onsubmit = () => {
         divResult.style.color = "black";
         divResult.innerHTML = "Loading...";
-        currencyExchangeApiCall(txtBaseCurrencyCode.value);
+        currencyExchangeApiCall(txtBaseCurrencyCode.value.toUpperCase());
         return false;
     }
 
