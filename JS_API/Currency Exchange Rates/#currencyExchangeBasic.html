@@ -65,7 +65,7 @@
                 console.log(data);
                 return divResult.innerHTML = `1 USD is equals to ${data.rates[currencyCode]} ${currencyCode}`;
             })
-            //if any error while API call, do something...
+            //catch, if any error while API call and do something...
             .catch(error => divResult.innerHTML = `Something not right! Try again.`);
 
         return false;
