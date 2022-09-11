@@ -81,6 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
      * @returns boolean false, to stop the form from submitting
      */
     currencyForm.onsubmit = () => {
+        divResult.style.color = "black";
         divResult.innerHTML = "Loading...";
         currencyExchangeApiCall(txtBaseCurrencyCode.value.toUpperCase(), txtTargetCurrencyCode.value.toUpperCase());
         return false;
