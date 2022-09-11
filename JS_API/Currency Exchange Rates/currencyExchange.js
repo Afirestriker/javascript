@@ -39,8 +39,8 @@ document.addEventListener('DOMContentLoaded', () => {
              to this  :  abc  =>  xyz
              This is what have been done below
      */
-    const currencyExchangeApiCall = (baseCurrencyCode, targetCurrencyCode) => {
-        let URL = `https://api.apilayer.com/exchangerates_data/latest?base=${baseCurrencyCode}&symbols=${targetCurrencyCode}`;
+    const currencyExchangeApiCall = (baseCurrencyCode) => {
+        let URL = `https://api.apilayer.com/exchangerates_data/latest?base=${baseCurrencyCode}`;
         fetch(URL, requestDefaultOptions)       //making an api call and fetching the respone.
             .then(response => response.json())  //then, takes the reponse and convert to JSON format
             .then(data => currencyExchangeApiResponse(data, 1))  //then, once data is issue, do something...
@@ -56,7 +56,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if(status)
         {
             divResult.style.color = "green";
-            divResult.innerHTML = `1 ${result.base} is equals to ${result.rates[txtTargetCurrencyCode.value]} ${txtTargetCurrencyCode.value}`;
+            let rates = txtTargetCurrencyCode.value.toUpperCase();
+            divResult.innerHTML = `1 ${result.base} is equals to ${result.rates[rates].toFixed(3)} ${rates}`;
             resetTxtInput();
         } else {
             divResult.style.color = "red";
@@ -83,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
     currencyForm.onsubmit = () => {
         divResult.style.color = "black";
         divResult.innerHTML = "Loading...";
-        currencyExchangeApiCall(txtBaseCurrencyCode.value.toUpperCase(), txtTargetCurrencyCode.value.toUpperCase());
+        currencyExchangeApiCall(txtBaseCurrencyCode.value);
         return false;
     }
 

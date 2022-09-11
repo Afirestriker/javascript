@@ -42,20 +42,13 @@
     /**
      * Event: on form submit
      * JS Promise on API call
-     * NOTE: since we are using JS arrow functions and based on convention, an arrow function
-             must have an return statement. And if there's only one parameter and only
-            one statement i.e reurn statement. 
-            We can easily write the arrow function
-            from this: (abc) => { return xyz}
-            to this  :  abc  =>  xyz
-            This is what have been done below
-    * @returns boolean false, to stop the form from submitting
+     * @returns boolean false, to stop the form from submitting
     */
     currencyForm.onsubmit = () => {
         divResult.innerHTML = "Loading...";
         let currencyCode = txtCurrencyCode.value.toUpperCase();
-        let URL = `https://api.apilayer.com/exchangerates_data/latest?base=USD&symbols=${currencyCode}`;
-        
+        let URL = `https://api.apilayer.com/exchangerates_data/latest?base=USD`;
+
         //making an api call and fetching the respone.
         fetch(URL, requestDefaultOptions)
             //then, takes the reponse and convert to JSON format
@@ -63,7 +56,13 @@
             //then, once data is issue, do something...
             .then(data => {
                 console.log(data);
-                return divResult.innerHTML = `1 USD is equals to ${data.rates[currencyCode]} ${currencyCode}`;
+                let rates = data.rates[currencyCode];
+                if(rates !== undefined)
+                {
+                    return divResult.innerHTML = `1 USD is equals to ${rates.toFixed(2)} ${currencyCode}`;
+                } else {
+                    return divResult.innerHTML = "Invalid Currency.";
+                }
             })
             //catch, if any error while API call and do something...
             .catch(error => divResult.innerHTML = `Something not right! Try again.`);
