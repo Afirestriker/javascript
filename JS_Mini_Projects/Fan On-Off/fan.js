@@ -4,6 +4,10 @@ const fan    = document.querySelector('#fan');
 let   fanOn;
 let   rotate = 0;
 
+document.addEventListener('DOMContentLoaded', () => {
+    btnOff.disabled = true;
+});
+
 const turnFanOn = () => {
     rotate += 75;
     fan.style.transform = `rotate(${(rotate%360)}deg)`;
