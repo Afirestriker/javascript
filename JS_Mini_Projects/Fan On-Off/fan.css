@@ -1,0 +1,41 @@
+.main-grid-container {
+    display: grid;
+        gap: 0px 20px;
+        justify-content: center;
+        text-align: center;
+        font-size: 40px;
+        grid-template-areas:
+                'header header header header'
+                'btn1   btn1   btn2   btn2'
+                'fan    fan    fan    fan';
+    
+    /* border: 2px solid black; */
+}
+
+.grid-item1 {
+    grid-area: header;
+}
+
+.grid-btn-on{
+    grid-area: btn1;
+    background-color: lightgreen;
+}
+
+.grid-btn-off{
+    grid-area: btn2;
+    background-color: lightcoral;
+}
+
+.power-button {
+    padding: 10px;
+    border: none;
+}
+
+.power-button:hover{
+    opacity: 0.9;
+}
+
+.grid-div-fan{
+    grid-area: fan;
+    margin-top: 30px;
+}
