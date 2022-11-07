@@ -19,9 +19,7 @@
 > JSON, is a way of transferring data in the form of JavaScript objects-- these sort of objects that happen to have properties and values associated with them. 
 
 > And the very nice thing about  this(JSON) particular representation is that it is both human-readable and machine-readable-- that we as people can look at this and get an intuitive understanding for what all of this means, but also a computer knows how to access particular properties that appear before the colon and get access to what those values are, which appear after the colon as well. 
-
 > - And another advantage of the JSON representation is it is very conducive to representing structures of things. So these values don't just need to be strings or numbers. They could be lists, or arrays that happen to have a sequence of possible values, or they could even be other JavaScript objects that if we wanted to represent not just the city name, but represent the city name and the airport code
-
 > - And the important thing is as long as I and the person I'm communicating with agree upon this representation, agree upon what the names of these keys are and what the structure of this JSON payload, this JSON object happens to be, then the person on the receiving end can take this data and write a program that's able to interpret it and use that data in some meaningful way. 
 
 
