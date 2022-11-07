@@ -1,6 +1,6 @@
-> ## JavaScript Object:
-Object in javaScript turns out to be quite powerful. To be able to represent data in a structured way, where we have an association of keys or otherwise known as properties with particular values and to be able to access a particular value.  
-It turns out that one of the ways this is make 'object' most useful is in the exchange of data-- moving data around from one service to another.
+ ## JavaScript Object:
+> Object in javaScript turns out to be quite powerful. To be able to represent data in a structured way, where we have an association of keys or otherwise known as properties with particular values and to be able to access a particular value.  
+> It turns out that one of the ways this is make 'object' most useful is in the exchange of data-- moving data around from one service to another.
 
 ## APIs (Application Programming Interfaces)
 > - An **Application Programming Interface (API)** is a ***contract that allows code to talk to other code***. APIs are the building blocks of modern software because they allow for the sharing of resources and services across applications, organizations, and devices.  
@@ -8,11 +8,11 @@ It turns out that one of the ways this is make 'object' most useful is in the ex
 > - If you want your application to be able to talk to some other service-- maybe you want your application to interact with Google Maps, or to be able to interact with Amazon, or some other weather service to get the day's weather-- then you might be able to access some API, some mechanism whereby you can communicate with another service by sending a request and receiving back data in some sort of very well-structured format. And very often, that well-structured format happens to be a particular type of data known as JSON
 
 ## Why are APIs Important?
-> 1. APIs help developers **integrate exciting features** and **build automations** without reinventing the wheel 
-> *ex: using a Weather API instead of launching your own weather balloons*
-> 2. APIs allow enterprises to **open up their product for faster innovation**
+> 1. APIs help developers **integrate exciting features** and **build automations** without reinventing the wheel  
+> *ex: using a Weather API instead of launching your own weather balloons*  
+> 2. APIs allow enterprises to **open up their product for faster innovation**  
 > *ex: apps that use data from Twitter/Facebook APIs*  
-> 3. APIs can **be products themselves**
+> 3. APIs can **be products themselves**  
 *ex: Software as a Service (SaaS) products like Stripe/Twilio APIs*  
 
 ## JSON (JavaScript Object Notation)
