@@ -1,6 +1,6 @@
-## JavaScript Object:
-> Object in javaScript turns out to be quite powerful. To be able to represent data in a structured way, where we have an association of keys or otherwise known as properties with particular values and to be able to access a particular value.
-> It turns out that one of the ways this is make 'object' most useful is in the exchange of data-- moving data around from one service to another.
+> ## JavaScript Object:
+Object in javaScript turns out to be quite powerful. To be able to represent data in a structured way, where we have an association of keys or otherwise known as properties with particular values and to be able to access a particular value.
+It turns out that one of the ways this is make 'object' most useful is in the exchange of data-- moving data around from one service to another.
 
 ## APIs (Application Programming Interfaces)
 > - An **Application Programming Interface (API)** is a ***contract that allows code to talk to other code***. APIs are the building blocks of modern software because they allow for the sharing of resources and services across applications, organizations, and devices.  
