@@ -1,4 +1,4 @@
-## Welcome, Thanks for visiting.
+## Welcome
 
 This Repository contains JavaScript Programs from Basic to writting some logical programs
 
