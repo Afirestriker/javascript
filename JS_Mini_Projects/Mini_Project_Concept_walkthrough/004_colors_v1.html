@@ -19,8 +19,7 @@
            class 'btnColor' 
            */
         const btnsColor = document.querySelectorAll('.btnColor');
-        const btnReset  = document.querySelector('#btnReset');
-
+        
         btnsColor.forEach( eachButton => {
             eachButton.onclick = () => {
                 txtHello.style.color = eachButton.dataset.color;
