@@ -1,13 +1,14 @@
 /* NOTE:
   - since in 001_domCounter.html file, we have loaded script inside head tag, which comes before <body>
     we are using 'DOMcontentLoaded' event listener, so that the portion of this JS code, execute
-    after the whole html <body> is loaded. SO that the button with id "incrementCount" will be found.
+    after the whole html <body> is loaded. 
+    *This process is implemened only to avoid element not found bug.
 
     Else, if we could have loaded <script src=""></scritp> after the html <body> tag. 
-    we won't required addEventListener in that scenario.
+    we won't required addEventListener for DOMContentLoaded in that scenario.
 
-    Recommended way: load <script> after the body. This is done just for practice and being aware of the 
-    functionality/concept.
+    *Recommended way: load <script> after the body. 
+    This is done just for practice and being aware of the functionality/concept.
  */
 document.addEventListener('DOMContentLoaded', () => {
 
