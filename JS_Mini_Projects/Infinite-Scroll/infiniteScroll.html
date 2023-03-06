@@ -2,12 +2,45 @@
 <html>
     <head>
         <title>Infinite Scroll</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
+            @keyframes hide {
+                0% {
+                    opacity: 1;
+                    height: 100%;
+                    line-height: 100%;
+                    padding: 10px 20px;
+                    margin: 10px;
+                }
+                75% {
+                    opacity: 0;
+                    height: 100%;
+                    line-height: 100%;
+                    padding: 10px 20px;
+                    margin: 10px;
+                }
+                100% {
+                    opacity: 0;
+                    height: 0px;
+                    line-height: 0%;
+                    padding: 0px;
+                    margin: 0px;
+                }
+            }
+
             .posts{
                 background-color: rgb(86, 216, 86);
-                padding: 10px;
+                padding: 10px 20px;
                 margin: 10px;
                 font-weight: 500;
+
+                display: flex;
+                justify-content: space-between;
+
+                animation-name: hide;
+                animation-duration: 2s;
+                animation-fill-mode: forwards;
+                animation-play-state: paused;
             }
         </style>
     </head>
