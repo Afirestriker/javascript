@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Duplication Select option check</title>
+    <style>
+      select {
+        margin: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      Duplication select options check - An option must not be repeated between
+      selection
+    </div>
+
+    <!--- select #1 -->
+    <select class="select-box">
+      <option value="0">Select an option</option>
+      <option value="1">Option 1</option>
+      <option value="2">Option 2</option>
+      <option value="3">Option 3</option>
+      <option value="4">Option 4</option>
+      <option value="5">Option 5</option>
+    </select>
+
+    <!--- select #2 -->
+    <select class="select-box">
+      <option value="0">Select an option</option>
+      <option value="1">Option 1</option>
+      <option value="2">Option 2</option>
+      <option value="3">Option 3</option>
+      <option value="4">Option 4</option>
+      <option value="5">Option 5</option>
+    </select>
+
+    <!--- select #3 -->
+    <select class="select-box">
+      <option value="0">Select an option</option>
+      <option value="1">Option 1</option>
+      <option value="2">Option 2</option>
+      <option value="3">Option 3</option>
+      <option value="4">Option 4</option>
+      <option value="5">Option 5</option>
+    </select>
+
+    <!--- select #4 -->
+    <select class="select-box">
+      <option value="0">Select an option</option>
+      <option value="1">Option 1</option>
+      <option value="2">Option 2</option>
+      <option value="3">Option 3</option>
+      <option value="4">Option 4</option>
+      <option value="5">Option 5</option>
+    </select>
+
+    <!--- select #5 -->
+    <select class="select-box">
+      <option value="0">Select an option</option>
+      <option value="1">Option 1</option>
+      <option value="2">Option 2</option>
+      <option value="3">Option 3</option>
+      <option value="4">Option 4</option>
+      <option value="5">Option 5</option>
+    </select>
+
+    <!--- select #6 -->
+    <select class="select-box">
+      <option value="0">Select an option</option>
+      <option value="1">Option 1</option>
+      <option value="2">Option 2</option>
+      <option value="3">Option 3</option>
+      <option value="4">Option 4</option>
+      <option value="5">Option 5</option>
+    </select>
+
+    <!--- select #7 -->
+    <select class="select-box">
+      <option value="0">Select an option</option>
+      <option value="1">Option 1</option>
+      <option value="2">Option 2</option>
+      <option value="3">Option 3</option>
+      <option value="4">Option 4</option>
+      <option value="5">Option 5</option>
+    </select>
+
+    <!--- select #8 -->
+    <select class="select-box">
+      <option value="0">Select an option</option>
+      <option value="1">Option 1</option>
+      <option value="2">Option 2</option>
+      <option value="3">Option 3</option>
+      <option value="4">Option 4</option>
+      <option value="5">Option 5</option>
+    </select>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </body>
+</html>
+
+<script>
+  $(document).ready(function () {
+    // Array to keep track of selected options
+    const selectedOptions = new Array(8).fill(0);
+
+    // Function to handle changes in select elements
+    $(".select-box").change(function () {
+      // Get the index of the select element that was changed
+      const selectIndex = $(".select-box").index(this);
+
+      // Get the value of the selected option
+      const selectedValue = $(this).val();
+
+      // If the selected option is already selected in another select element
+      if (selectedOptions.includes(selectedValue)) {
+        // Find the index of the select element with the conflicting selection
+        const conflictIndex = selectedOptions.indexOf(selectedValue);
+
+        // Set the selection in the current select element to the previously selected option
+        $(this).val(selectedOptions[selectIndex]);
+
+        // Alert the user about the conflict
+        alert("Option " + selectedValue + " is already selected in Select " + (conflictIndex + 1) + ".");
+      } else {
+        // Update the selected options array
+        selectedOptions[selectIndex] = selectedValue;
+      }
+    });
+  });
+</script>
