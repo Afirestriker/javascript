@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Math Captcha Verification</title>
+    </head>
+    <body>
+        <div style="text-align: center;">
+            <div style="display: flex; justify-content: center; align-items: center;">
+                <!-- Captcha Reload -->
+                <span onclick="generateCaptcha()" style="cursor: pointer; margin-right: 10px;">&#x21bb;</span>
+                <!-- Captcha Question -->
+                <div id="captcha" style="font-size:2rem; margin: 4px;"></div>
+                <!-- Captcha Answer -->
+                <input type="number" id="answer" placeholder="Enter answer here" autofocus style="margin-right: 4px;">
+                <!-- Captcha Submit Answer -->
+                <button onclick="checkAnswer()">Submit</button>
+            </div>
+            <!-- Captcha Response -->
+            <div id="captchaResponse"></div>
+        </div>
+
+        <script type="text/javascript" src="https://www.tutorialspoint.com/jquery/jquery-3.6.0.js"> </script>
+    </body>
+</html>
+
+<script>
+  $('#answer').on('keypress', function(eve) {
+    if (eve.key == 'Enter') checkAnswer();
+  });
+
+  // Generate Math Captcha Code
+  function generateCaptcha() {
+    // Generate random numbers and operators
+    const digitUnit1 = [10, 100, 1000][Math.floor(Math.random() * 3)]
+    const digitUnit2 = [10, 100, 1000][Math.floor(Math.random() * 3)]
+    const num1       = Math.ceil(Math.random() * digitUnit1);
+    const num2       = Math.ceil(Math.random() * digitUnit2);
+    const operator   = ["+", "-", "*"][Math.floor(Math.random() * 3)];
+  
+    // Create the captcha question
+    $('#answer').val('');
+    $('#captcha').data('num1', num1);
+    $('#captcha').data('num2', num2);
+    $('#captcha').data('operator', operator);
+    $('#captcha').text(num1 + ' ' + operator + ' ' + num2);
+  }
+
+  // Check the answer
+  function checkAnswer() {
+    const num1         = $('#captcha').data('num1');
+    const num2         = $('#captcha').data('num2');
+    const operator     = $('#captcha').data('operator');
+    const answer       = $('#answer').val();
+    let expectedAnswer = 0;
+
+    switch (operator) {
+      case "+": expectedAnswer = num1+num2; break;
+      case "-": expectedAnswer = num1-num2; break;
+      case "*": expectedAnswer = num1*num2; break;
+      default : expectedAnswer = 0; break;
+    }
+
+    if (answer == expectedAnswer) {
+      // alert('Correct!');
+      $('#captchaResponse').css({color: "green"});
+      $('#captchaResponse').text('Correct! Go again...');
+      generateCaptcha(); //refresh captcha
+      return true;
+    } else {
+      // alert('Incorrect. Please try again.');
+      $('#captchaResponse').css({ color: "red" });
+      $('#captchaResponse').text('Incorrect!. Please try again.');
+      generateCaptcha(); //refresh captcha
+      return false;
+    }
+  }
+
+  generateCaptcha();
+</script>
