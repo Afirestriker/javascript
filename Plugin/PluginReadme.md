@@ -8,3 +8,4 @@
 
 - [Gauge.js](https://bernii.github.io/gauge.js/)
     - [See examples](https://github.com/Afirestriker/JavaScript/tree/main/Plugin/Gauge.js)
+
