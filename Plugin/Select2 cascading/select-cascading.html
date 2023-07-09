@@ -1,5 +1,5 @@
 <!-- 
- - Example: On Select2 jQuery plugin
+ - Example: On Select2 jQuery plugin. A jQuery replacement to select boxes
  - Implementing select cascading
  - i.e., Based on selected country its corresponding states list will be shown.
  - and based on selected state ith respective Momument list will be shown
@@ -7,26 +7,30 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Select Cascading using Select2</title>
-		
-		<style> select {width: 20%} </style>
+
+		<style>
+			select {
+				width: 20%;
+			}
+		</style>
 
 		<!-- Select2 CSS -->
-		<link href="Select2/select2.min.css" rel="stylesheet"/>
+		<link href="Select2/select2.min.css" rel="stylesheet" />
 	</head>
 	<body>
 		<select name="country" id="country">
-			<option selected disabled> Select Country </option>
+			<option selected disabled>Select Country</option>
 		</select>
 
 		<select name="states" id="states">
-			<option selected disabled> Select State </option>
+			<option selected disabled>Select State</option>
 		</select>
 
 		<select name="momuments" id="momuments">
-			<option selected disabled> Select Monument </option>
+			<option selected disabled>Select Monument</option>
 		</select>
 
 		<!-- jQuery -->
@@ -37,92 +41,93 @@
 </html>
 
 <script>
-	$('#country').select2({});
-	$('#states').select2({});
-	$('#momuments').select2({});
+	$("#country").select2({});
+	$("#states").select2({});
+	$("#momuments").select2({});
 
 	const dataList = {
 		countries: [
-			{id: 1, name: "India"},
-			{id: 2, name: "Australia"},
-			{id: 3, name: "England"}
+			{ id: 1, name: "India" },
+			{ id: 2, name: "Australia" },
+			{ id: 3, name: "England" },
 		],
 		states: {
 			1: [
-				{id: 101, name: "Delhi"},
-				{id: 102, name: "Karnataka"}
+				{ id: 101, name: "Delhi" },
+				{ id: 102, name: "Karnataka" },
 			],
 			2: [
-				{id: 201, name: "Queensland"},
-				{id: 202, name: "South Australia"},
+				{ id: 201, name: "Queensland" },
+				{ id: 202, name: "South Australia" },
 			],
 			3: [
-				{id: 301, name: "Amesbury"},
-				{id: 302, name: "South Bank "},
-			]
+				{ id: 301, name: "Amesbury" },
+				{ id: 302, name: "South Bank " },
+			],
 		},
 		momuments: {
 			101: [
-				{id: 53, name: "Firoz shah Kotla"},
-				{id: 54, name: "Jantar Mantar"},
-				{id: 55, name: "Red Fort"}
+				{ id: 53, name: "Firoz shah Kotla" },
+				{ id: 54, name: "Jantar Mantar" },
+				{ id: 55, name: "Red Fort" },
 			],
 			102: [
-				{id: 56, name: "Bellary Fort"},
-				{id: 57, name: "Hampi Monuments"},
-				{id: 58, name: "Lal Bagh"}
+				{ id: 56, name: "Bellary Fort" },
+				{ id: 57, name: "Hampi Monuments" },
+				{ id: 58, name: "Lal Bagh" },
 			],
 			201: [
-				{id: 67, name: "Sunshine State"},
-				{id: 68, name: "Great Barrier Reef"},
-				{id: 69, name: "Daintree Rainforest"}
+				{ id: 67, name: "Sunshine State" },
+				{ id: 68, name: "Great Barrier Reef" },
+				{ id: 69, name: "Daintree Rainforest" },
 			],
 			202: [
-				{id: 77, name: "Barossa Valley"},
-				{id: 78, name: "Kangaroo Island"}
+				{ id: 77, name: "Barossa Valley" },
+				{ id: 78, name: "Kangaroo Island" },
 			],
-			301: [
-				{id: 97, name: "Stonehenge"}
-			],
-			302: [
-				{id: 99, name: "Tower Bridge"}
-			]
-		}
+			301: [{ id: 97, name: "Stonehenge" }],
+			302: [{ id: 99, name: "Tower Bridge" }],
+		},
 	};
 
 	// Load Countries List
-	const selectElement = $('#country');
+	const selectElement = $("#country");
 	const optionList = dataList.countries;
 	const length = optionList.length;
+
 	for (let i = 0; i < length; i++) {
-		selectElement.append($('<option/>', {
-			value: dataList.countries[i].id,
-			text: dataList.countries[i].name
-		}));
+		selectElement.append(
+			$("<option/>", {
+				value: dataList.countries[i].id,
+				text: dataList.countries[i].name,
+			})
+		);
 	}
 
 	//Country selection change event
-	$('#country').on('change', function() {
+	$("#country").on("change", function () {
 		const countryId = $("#country option:selected").val();
-		loadStateAndMonumentList(countryId, 'states')
+		loadStateAndMonumentList(countryId, "states");
 	});
 
 	//state selection change event
-	$('#states').on('change', function() {
+	$("#states").on("change", function () {
 		const stateId = $("#states option:selected").val();
-		loadStateAndMonumentList(stateId, 'momuments')
+		loadStateAndMonumentList(stateId, "momuments");
 	});
 
 	function loadStateAndMonumentList(id, typeToLoad) {
-		const typeSingular = (typeToLoad == 'states' ? 'State' : 'Monument');
+		const typeSingular = typeToLoad == "states" ? "State" : "Monument";
 
-		const selectElement = $('#' + typeToLoad);
+		const selectElement = $("#" + typeToLoad);
 		selectElement.empty();
-		selectElement.append('<option selected disabled> Select ' + typeSingular + '</option>');
+		selectElement.append(
+			"<option selected disabled> Select " + typeSingular + "</option>"
+		);
 
-		if (typeToLoad != 'momuments') {
-			$('#momuments').empty();
-			$('#momuments').append('<option selected disabled> Select Monument </option>');
+		if (typeToLoad != "momuments") {
+			$("#momuments").empty();
+			$("#momuments").append("<option selected disabled> Select Monument </option>");
 		}
 
 		if (dataList[typeToLoad][id] == undefined) {
@@ -132,10 +137,12 @@
 		const optionList = dataList[typeToLoad][id];
 		const length = optionList.length;
 		for (let i = 0; i < length; i++) {
-			selectElement.append($('<option/>', {
-				value: optionList[i].id,
-				text: optionList[i].name
-			}));
+			selectElement.append(
+				$("<option/>", {
+					value: optionList[i].id,
+					text: optionList[i].name,
+				})
+			);
 		}
 	}
 
@@ -143,18 +150,18 @@
 		const dataList = {};
 
 		dataList.country = {
-			"id": $('#country option:selected').val(), 
-			"name": $('#country option:selected').text()
+			id: $("#country option:selected").val(),
+			name: $("#country option:selected").text(),
 		};
 
 		dataList.state = {
-			"id": $('#states option:selected').val(), 
-			"name": $('#states option:selected').text()
+			id: $("#states option:selected").val(),
+			name: $("#states option:selected").text(),
 		};
 
 		dataList.monument = {
-			"id": $('#momuments option:selected').val(), 
-			"name": $('#momuments option:selected').text()
+			id: $("#momuments option:selected").val(),
+			name: $("#momuments option:selected").text(),
 		};
 
 		return dataList;
@@ -162,11 +169,11 @@
 
 	function setCountryStateMonumentDetails(dataList) {
 		if (dataList == undefined || Object.keys(dataList).length == 0) {
-			alert('Data list is empty. Try again...');
+			alert("Data list is empty. Try again...");
 		}
 
-		$('#country').val(dataList.country.id).trigger('change');
-		$('#states').val(dataList.state.id).trigger('change');
-		$('#momuments').val(dataList.monument.id);
+		$("#country").val(dataList.country.id).trigger("change");
+		$("#states").val(dataList.state.id).trigger("change");
+		$("#momuments").val(dataList.monument.id);
 	}
 </script>
