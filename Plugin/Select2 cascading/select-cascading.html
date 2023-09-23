@@ -95,7 +95,7 @@
 	const optionList = dataList.countries;
 	const length = optionList.length;
 
-	for (let i = 0; i < length; i++) {
+	for (const i = 0; i < length; i++) {
 		selectElement.append(
 			$("<option/>", {
 				value: dataList.countries[i].id,
@@ -110,7 +110,7 @@
 		loadStateAndMonumentList(countryId, "states");
 	});
 
-	//state selection change event
+	// State dropdown change event
 	$("#states").on("change", function () {
 		const stateId = $("#states option:selected").val();
 		loadStateAndMonumentList(stateId, "momuments");
