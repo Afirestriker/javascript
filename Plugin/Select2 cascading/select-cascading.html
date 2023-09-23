@@ -47,11 +47,15 @@
 
 	const dataList = {
 		countries: [
+			{ id: 0, name: "None" },
 			{ id: 1, name: "India" },
 			{ id: 2, name: "Australia" },
 			{ id: 3, name: "England" },
 		],
 		states: {
+			0: [
+				{ id: 0, name: "None" }
+			],
 			1: [
 				{ id: 101, name: "Delhi" },
 				{ id: 102, name: "Karnataka" },
@@ -66,6 +70,9 @@
 			],
 		},
 		momuments: {
+			0: [
+				{ id: 0, name: "None" }
+			],
 			101: [
 				{ id: 53, name: "Firoz shah Kotla" },
 				{ id: 54, name: "Jantar Mantar" },
@@ -95,7 +102,7 @@
 	const optionList = dataList.countries;
 	const length = optionList.length;
 
-	for (const i = 0; i < length; i++) {
+	for (let i = 0; i < length; i++) {
 		selectElement.append(
 			$("<option/>", {
 				value: dataList.countries[i].id,
@@ -104,7 +111,7 @@
 		);
 	}
 
-	//Country selection change event
+	// Country dropdown change event
 	$("#country").on("change", function () {
 		const countryId = $("#country option:selected").val();
 		loadStateAndMonumentList(countryId, "states");
@@ -116,6 +123,7 @@
 		loadStateAndMonumentList(stateId, "momuments");
 	});
 
+	// On dropdown change - update State and Monuments dropdown options list
 	function loadStateAndMonumentList(id, typeToLoad) {
 		const typeSingular = typeToLoad == "states" ? "State" : "Monument";
 
@@ -146,6 +154,7 @@
 		}
 	}
 
+	// Function to return the set form data for save operation
 	function getCountryStateMonumentDetails() {
 		const dataList = {};
 
@@ -167,6 +176,7 @@
 		return dataList;
 	}
 
+	// Function to collect and update form dropdown selection for edit operation
 	function setCountryStateMonumentDetails(dataList) {
 		if (dataList == undefined || Object.keys(dataList).length == 0) {
 			alert("Data list is empty. Try again...");
@@ -175,5 +185,10 @@
 		$("#country").val(dataList.country.id).trigger("change");
 		$("#states").val(dataList.state.id).trigger("change");
 		$("#momuments").val(dataList.monument.id);
+	}
+
+	// Function to reset form dropdown selection
+	function resetCountryStateMonumentDropdown() {
+		$("#country").val(0).trigger("change");
 	}
 </script>
