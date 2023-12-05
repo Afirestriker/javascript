@@ -114,7 +114,7 @@
                     ++counter;
                     const strLength = counter.toString().length;
                     array2 = [...array1];
-                    array2.splice(-strLength, arrLength - strLength, counter);
+                    array2.splice(-strLength, strLength, counter);
                     incrementedValue = array2.toString().replaceAll(",", "");
 
                     document.getElementById("viewCountervalue").innerHTML = incrementedValue;
