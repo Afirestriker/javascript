@@ -37,10 +37,7 @@
 <script>
     const iconSelector = $("#iconSelector").fontIconPicker(init_fontIconPicker); //init_fontIconPicker declared and initialize in font-awesome-icons-list.js file.
 
-    setTimeout(() => {
-        alert("Uses setTimeout() method to update Icon Using fontIconPicer in-built method setIcon()");
-        iconSelector.setIcon("fas fa-code");
-    }, 3000);
+    iconSelector.setIcon("fas fa-code");
 
     function getIconValue() {
         alert("Selected icon value is " + $("#iconSelector").val());
