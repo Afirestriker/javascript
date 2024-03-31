@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>jQuery Font Icone Picker</title>
+
+        <link rel="stylesheet" href="fontIconPicker/css/base/jquery.fonticonpicker.min.css"/>
+        <link rel="stylesheet" href="fontIconPicker/css/themes/bootstrap-theme/jquery.fonticonpicker.bootstrap.min.css"/>
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+          integrity="sha512-L7MWcK7FNPcwNqnLdZq86lTHYLdQqZaz5YcAgE+5cnGmlw8JT03QB2+oxL100UeB6RlzZLUxCGSS4/++mNZdxw=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"
+        />
+    </head>
+    <body>
+        <label for="iconSelector">Icon</label><br />
+        <input type="text" id="iconSelector" name="icon" value="" />
+        <!-- <input type="text" id="default-theme" name="icon" value="" /> -->
+        <!-- <input type="text" id="grey-theme"    name="icon" value="" /> -->
+        <!-- <input type="text" id="black-theme"   name="icon" value="" /> -->
+
+        <br><br>
+        <button onclick="getIconValue()">Display Icon Value</button>
+
+        <!-- jQuery -->
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <!-- jQuery Font-Icon-Picker -->
+        <script src="fonticonpicker/js/jquery.fonticonpicker.js"></script>
+        <!-- Font Icon Picker Custom List -->
+        <script src="fonticonpicker/js/font-awesome-icons-list.js"></script>
+    </body>
+</html>
+
+<script>
+    const iconSelector = $("#iconSelector").fontIconPicker(init_fontIconPicker); //init_fontIconPicker declared and initialize in font-awesome-icons-list.js file.
+
+    setTimeout(() => {
+        alert("Uses setTimeout() method to update Icon Using fontIconPicer in-built method setIcon()");
+        iconSelector.setIcon("fas fa-code");
+    }, 3000);
+
+    function getIconValue() {
+        alert("Selected icon value is " + $("#iconSelector").val());
+    }
+
+    $("#default-theme").fontIconPicker({
+        source: fontAwesomeIcons,
+        iconsPerPage: 25,
+        autoClose: true,
+        hasSearch: true,
+        emptyIcon: true,
+        searchPlaceholder: "SEARCH ICONS...",
+        appendTo: "body",
+        theme: "fip-bootstrap", // need to include css link - fontIconPicker/css/bootstrap-theme...
+    });
+
+    $("#grey-theme").fontIconPicker({
+        source: fontAwesomeIcons,
+        iconsPerPage: 25,
+        autoClose: true,
+        hasSearch: true,
+        emptyIcon: true,
+        searchPlaceholder: "SEARCH ICONS...",
+        appendTo: "body",
+        theme: "fip-grey", // need to include css link - fontIconPicker/css/grey-theme...
+    });
+
+    $("#black-theme").fontIconPicker({
+        source: fontAwesomeIcons,
+        iconsPerPage: 25,
+        autoClose: true,
+        hasSearch: true,
+        emptyIcon: true,
+        searchPlaceholder: "SEARCH ICONS...",
+        appendTo: "body",
+        theme: "fip-inverted", // need to include css link - fontIconPicker/css/inverted-theme...
+    });
+</script>

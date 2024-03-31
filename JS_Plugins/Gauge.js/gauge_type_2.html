@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="gaugePreview">
+            <div id="displayGaugeValue" style="top: 160px; left: -70px; font-size: 24px;"></div>
+            <canvas id="donut-gauge"></canvas>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/gaugeJS/dist/gauge.min.js"></script>
+    </body>
+</html>
+
+<script>
+    const target = document.getElementById('donut-gauge'); // Get the canvas element
+    const selectGauge2 = new Donut(target); // Initialize the donut gauge
+ 
+    selectGauge2.setTextField(document.getElementById("displayGaugeValue"));
+
+    // Set the value to be displayed on render
+    selectGauge2.set(50); // Replace "50" with your desired value
+
+    // Re-render donut gauge
+    // selectGauge2.render();
+</script>

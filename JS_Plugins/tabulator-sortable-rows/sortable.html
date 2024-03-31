@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Sortable Tabulator Rows</title>
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+            integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+            crossorigin="anonymous"
+        />
+        <script
+            src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+            crossorigin="anonymous"
+        ></script>
+
+        <link rel="stylesheet" href="plugin/tabulator.css">
+
+        <style>
+            .tabulator-col-title {
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <h3>Tabulator Sortable Rows</h3>
+
+        <!-- edit Data Prop setitngs -->
+        <button type="button" id="editDataPropSetting" class="btn btn-primary">
+            Edit Data Prop Settings
+        </button>
+
+        <!-- Button trigger modal -->
+        <button type="button" id="btn_dataPropModal" class="btn btn-primary d-none" data-toggle="modal" data-target="#dataPropModal">
+            Launch Data Prop Settng Modal
+        </button>
+
+        <div id="viewSortableTable"></div>
+
+        <div class="modal modal-lg fade mx-auto" id="dataPropModal" data-backdrop="static" data-keyboard="false" role="dialog" aria-modal="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Data Prop Setting</h5>
+                        <button type="button" class="close dataPropModalClose" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body p-0">
+                        <div id="editSortableTable"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary dataPropModalClose" data-dismiss="modal">Close</button>
+                        <button type="button" id="dataPropModalSubmit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="plugin/jquery-3.7.1.min.js"></script>
+        <script src="plugin/tabulator.js"></script>
+        <script src="sortable.js"></script>
+
+        <script>
+            var tempData = [];
+
+            $('#editDataPropSetting').on('click', function() {
+                tempData = JSON.parse(JSON.stringify(tableData));
+                isViewMode = false;
+                $('#btn_dataPropModal').trigger('click');
+                updateTabulator();
+            });
+
+            $('.dataPropModalClose').on('click', function() {
+                tableData = JSON.parse(JSON.stringify(tempData));
+                isViewMode = true;
+            });
+
+            $('#dataPropModalSubmit').on('click', function() {
+                isViewMode = true;
+                tableData  = tableObject.getData();
+                tempData   = JSON.parse(JSON.stringify(tableData));
+
+                $('.dataPropModalClose').trigger('click');
+
+                updateTabulator();
+            });
+        </script>
+    </body>
+</html>
