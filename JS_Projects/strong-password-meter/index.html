@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <title>Strong Password Meter</title>
+    </head>
+    <body>
+        <div class="password-container">
+            <h3>Password Strength Validator Using ZXCVBN</h3>
+            <div>
+                <label for="password-field">Password:</label>
+                <input type="password" id="password-field" placeholder="Enter your password" />
+            </div>
+            <div id="password-strength">
+                <div class="progress-bar">
+                    <div class="section section-0 section-1"></div>
+                    <div class="section section-2"></div>
+                    <div class="section section-3"></div>
+                    <div class="section section-4"></div>
+                </div>
+                <span class="strength-text"></span>
+            </div>
+        </div>
+    </body>
+</html>
+
+<script src="jquery.js"></script>
+<script src="zxcvbn.js"></script>
+<script src="index.js"></script>
