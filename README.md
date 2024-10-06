@@ -14,12 +14,9 @@ In this section, I showcase various plugins and libraries that have enhanced my 
 - **[Gauge.js](https://github.com/bernii/gauge.js/)**: Create beautiful gauge charts.
 - **[Tabulator.js](https://tabulator.info/)**: Interactive tables for data display.
 - **[amCharts.js](https://www.amcharts.com/)**: Charts and graphs for data visualization.
+  - **[Amchart Editor](https://editor4.amcharts.com/am4editor/#/am4editor/home)**: User-friendly editor for amCharts.
 - **[Bootstrap](https://getbootstrap.com/)**: A CSS framework for responsive design.
 - **[Select2](https://select2.org/)**: A jQuery-based replacement for select boxes.
-
-### Other Tools
-
-- **[Amchart Editor](https://editor4.amcharts.com/am4editor/#/am4editor/home)**: User-friendly editor for amCharts.
 - **[Form.io Form Builder](https://formio.github.io/formio.js/app/builder)**: Build forms easily with this powerful tool.
 - **[jQuery Query Builder](https://querybuilder.js.org/demo.html)**: A customizable query builder interface.
 
