@@ -15,7 +15,7 @@ x(function() {
 function count() {
     let count = 0;
 
-    document.getElementById('clickme').addEventListener('click', function xyz(count) {
+    document.getElementById('clickme').addEventListener('click', function xyz() {
         console.log("Count", ++count, this);
     });
 }
