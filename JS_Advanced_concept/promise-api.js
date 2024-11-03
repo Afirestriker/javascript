@@ -1,13 +1,12 @@
 // ? NOTE: The Promise API return promises in the same sequence it was passed
 // ?  irrespective of the time it take to fulfilled a specifc promise.
 
-
 // all or nothing
 Promise.all([
-    new Promise((resolve, reject) => setTimeout(resolve(1), 5000)),
+    new Promise((resolve, reject) => setTimeout(() => resolve(1), 5000)),
     new Promise((resolve, reject) => resolve(2)),
-    new Promise((resolve, reject) => reject(3)),
-    "non-promise-iterator"
+    new Promise((resolve, reject) => reject('Promise.all rejected')),
+    "non-promise-iterator",
 ]).finally(() => {
     console.log("Promise.all complete");
 }).then(result => {
@@ -18,7 +17,7 @@ Promise.all([
 // all settled
 Promise.allSettled([
     new Promise((resolve, reject) => resolve(101)),
-    new Promise((resolve, reject) => setTimeout(resolve(102), 5000)),
+    new Promise((resolve, reject) => setTimeout(() => resolve(102), 5000)),
     new Promise((resolve, reject) => reject(103)),
     new Promise((resolve, reject) => resolve(104)),
     "non-promise-iterator",
@@ -44,16 +43,15 @@ if (!Promise.allSettledNew) {
 
 Promise.allSettledNew([
     new Promise((resolve, reject) => resolve(101)),
-    new Promise((resolve, reject) => setTimeout(resolve(102), 5000)),
+    new Promise((resolve, reject) => setTimeout(() => resolve(102), 5000)),
     new Promise((resolve, reject) => reject(103)),
     new Promise((resolve, reject) => resolve(104)),
     "non-promise-iterator",
 ]).finally(() => {
     console.log("Promise.allSettledNew Complete");
 }).then(result => {
-    debugger;
+    // debugger;
     for (const [indx, promiseObj] of Object.entries(result)) {
         console.log(`${indx} ->`, promiseObj);
     }
 }).catch(error => console.log("Catch", error));
-
