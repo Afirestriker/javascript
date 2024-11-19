@@ -14,7 +14,7 @@ function x() {
     // By conventional, the value of 'this' inside a function is 'undefined'
     // JavaScript has a 'value of substitution' which substitute the value
     //  from undefined to globalObject.
-    //  NOTE: ONLY IN CASE OF NON-STRIT MODE.
+    //  NOTE: THIS WORKS ONLY IN CASE OF NON-STRIT MODE.
     console.log(this);
 }
 // x();
