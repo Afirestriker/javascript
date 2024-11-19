@@ -16,9 +16,9 @@ xyzExpression();
 
 // 3. Difference between Function Statements and Function Expression?
 /* Hoisting plays a crucial role in Function Statement and Function Expression.
-   Function statement could be call before the declaration-line, since the whole statement is hoisted.
+   Function statement can be call before the declaration-line, since the whole statement is hoisted.
    Whereas, Function Expression can't be called before the function expression-line
-   Since, though variables are hoisted with a undefined value, and are not referencing to a function
+   Since, though variables are hoisted, but with a undefined value which is not referencing to a function
    Until the function expression line gets executed
 */
 
@@ -43,9 +43,10 @@ b(); // "b called"
 */
 
 // 7. First Class Functions a.k.a First Class Citizens
-/* The ability of a function to be use as values (function epxression)
-   and can be pass-in as an argument to another function (HOF)
-   and can be returned from an function.
+/* The ability of a function to
+     - be use as values (function epxression)
+     - be pass-in as an argument to another function (HOF)
+     - be returned from an function.
    Its these ability is known as First Class Function
 */
 
